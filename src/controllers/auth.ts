@@ -44,7 +44,11 @@ export const putMeSocialMedia: RequestHandler = async (req, res, next) => {
 			throw new Error();
 		}
 
-		const links = [...user.links, newLink];
+		let links: any[] = [];
+		if (user?.links) {
+			links = [...user.links];
+		}
+		links = [...links, newLink];
 
 		await User.findByIdAndUpdate(id, {
 			links,

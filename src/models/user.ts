@@ -13,9 +13,9 @@ export interface IUser extends Document {
 	email: string;
 	password: string;
 	name: string;
-	image: string;
-	bio: string;
-	links: {
+	image?: string;
+	bio?: string;
+	links?: {
 		display: boolean;
 		type: string;
 		value: string;
