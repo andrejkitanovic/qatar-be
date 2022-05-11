@@ -62,9 +62,9 @@ const insertUsers = async () => {
 		};
 	});
 	// await User.deleteMany()
-	await User.create(users)
+	// await User.create(users)
 };
-insertUsers();
+// insertUsers();
 
 export const getSingleUser: RequestHandler = async (req, res, next) => {
 	try {
