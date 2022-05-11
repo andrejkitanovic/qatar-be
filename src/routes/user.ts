@@ -12,26 +12,22 @@ const router = Router();
 defineRoutes(router, [
 	{
 		method: 'get',
-		route: '/:id',
+		route: '/:tag',
 		controller: getSingleUserController,
 	},
 	{
 		method: 'get',
 		route: '/',
+		roles: ['admin'],
 		controller: getUsersController,
 	},
 	{
 		method: 'post',
 		route: '/activate/:id',
+		roles: ['admin'],
 		// validator: postLoginValidator,
 		controller: activateUserController,
 	},
-	// {
-	// 	method: 'post',
-	// 	route: '/register/:organisation',
-	// 	validator: postRegisterValidator,
-	// 	controller: postRegisterController,
-	// },
 ]);
 
 export default router;

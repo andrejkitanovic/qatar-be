@@ -79,11 +79,12 @@ export const postLogin: RequestHandler = async (req, res, next) => {
 
 export const postRegister: RequestHandler = async (req, res, next) => {
 	try {
-		const { email, password, name } = req.body;
+		const { email, password, role, name } = req.body;
 
 		await User.create({
 			email,
 			password,
+			role,
 			name,
 		});
 

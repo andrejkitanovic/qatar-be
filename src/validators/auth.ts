@@ -25,7 +25,7 @@ export const postLogin = [
 			const isValidPassword = await bcrypt.compare(value, user?.password || '');
 
 			if (!isValidPassword) {
-				throw new Error(i18n.__('invalid password'));
+				throw new Error('invalid password');
 			}
 
 			return true;

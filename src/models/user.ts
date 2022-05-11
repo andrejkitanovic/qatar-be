@@ -28,6 +28,9 @@ const userSchema: Schema = new Schema({
 		enum: Roles,
 		required: true,
 	},
+	tag: {
+		type: String,
+	},
 	email: {
 		type: String,
 		required: true,
@@ -50,6 +53,10 @@ const userSchema: Schema = new Schema({
 			value: String,
 		},
 	],
+	activated: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 userSchema.pre('validate', async function (next) {
