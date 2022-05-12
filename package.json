@@ -63,11 +63,11 @@
 		"typescript": "^4.6.3"
 	},
 	"_moduleAliases": {
-		"helpers": "src/helpers",
-		"routes": "src/routes",
-		"models": "src/models",
-		"controllers": "src/controllers",
-		"middlewares": "src/middlewares",
-		"validators": "src/validators"
+		"helpers": "dist/helpers",
+		"routes": "dist/routes",
+		"models": "dist/models",
+		"controllers": "dist/controllers",
+		"middlewares": "dist/middlewares",
+		"validators": "dist/validators"
 	}
 }
