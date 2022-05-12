@@ -27,15 +27,7 @@ export const queryFilter = async ({ Model, query, searchFields, defaultFilters }
 		findBy = { ...findBy, $or: search };
 	}
 
-    console.log(findBy)
-
 	const data = await Model.find(findBy)
-		// .populate({
-		// 	path: populate ?? '',
-		// })
-		// .limit(limit)
-		// .skip((page - 1) * limit)
-		// .sort(sort);
 	const count = await Model.countDocuments(findBy);
 
 	return { data, count };

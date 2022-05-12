@@ -46,7 +46,6 @@ export const putMeSocialMedia: RequestHandler = async (req, res, next) => {
 		}
 
 		let userLinks: any[] = user?.links || [];
-		// let links: any[] = [];
 
 		if (!userLinks.length) {
 			userLinks = [newLink];
@@ -54,7 +53,6 @@ export const putMeSocialMedia: RequestHandler = async (req, res, next) => {
 			userLinks = userLinks.filter((single) => single.type !== newLink.type);
 			userLinks = [...userLinks, newLink];
 		}
-		console.log(userLinks)
 
 		await User.findByIdAndUpdate(id, {
 			links: userLinks,

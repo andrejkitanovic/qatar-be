@@ -65,7 +65,6 @@ const insertUsers = async () => {
 	});
 
 	await fs.writeFile('./src/data/users-parsed.json', JSON.stringify(users), 'utf8', function (err) {
-		console.log('here');
 		if (err) {
 			console.log('An error occured while writing JSON Object to File.');
 			return console.log(err);
