@@ -34,6 +34,27 @@ export const putMe: RequestHandler = async (req, res, next) => {
 	}
 };
 
+export const putMeImage: RequestHandler = async (req, res, next) => {
+	try {
+		const { id } = req.auth;
+
+		let image = null;
+		if (req.file?.path) {
+			image = 'https://qatar-be.herokuapp.com/uploads/' + req.file.path;
+		}
+
+		await User.findByIdAndUpdate(id, {
+			image: image,
+		});
+
+		res.json({
+			message: 'Successfully updated',
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
 export const putMeSocialMedia: RequestHandler = async (req, res, next) => {
 	try {
 		const { id } = req.auth;

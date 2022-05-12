@@ -13,7 +13,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-// import storage from "helpers/storage";
+import storage from "helpers/storage";
 import headersMiddleware from 'middlewares/headers';
 import errorHandlerMiddleware from 'middlewares/errorHandler';
 import connection from 'helpers/connection';
@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// storage(app);
+storage(app);
 app.use(headersMiddleware);
 routing(app);
 app.use(errorHandlerMiddleware);

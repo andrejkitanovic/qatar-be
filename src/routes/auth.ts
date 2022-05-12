@@ -6,6 +6,7 @@ import {
 	postLogin as postLoginController,
 	postRegister as postRegisterController,
 	putMe as putMeController,
+	putMeImage as putMeImageController,
 	putMeSocialMedia as putMeSocialMediaController,
 } from 'controllers/auth';
 import { postLogin as postLoginValidator, postRegister as postRegisterValidator } from 'validators/auth';
@@ -35,6 +36,12 @@ defineRoutes(router, [
 		route: '/me',
 		roles: ['admin', 'user'],
 		controller: putMeController,
+	},
+	{
+		method: 'put',
+		route: '/me/image',
+		roles: ['admin', 'user'],
+		controller: putMeImageController,
 	},
 	{
 		method: 'put',
