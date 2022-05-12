@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 import User from 'models/user';
 import { sendEmailAccountCreated, sendEmailResetPassword, sendEmailPasswordChanged } from 'utils/mailer';
@@ -144,8 +145,10 @@ export const postChangePassword: RequestHandler = async (req, res, next) => {
 	try {
 		const { id, password } = req.body;
 		const user = await User.findById(id);
+
+		const newPassword = await bcrypt.hash(password, 12);
 		await User.findByIdAndUpdate(id, {
-			password: password,
+			password: newPassword,
 		});
 		sendEmailPasswordChanged({ email: user?.email || '' });
 

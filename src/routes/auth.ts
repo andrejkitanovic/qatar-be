@@ -3,8 +3,10 @@ import defineRoutes from 'helpers/defineRoutes';
 
 import {
 	getMe as getMeController,
+	postChangePassword as postChangePasswordController,
 	postLogin as postLoginController,
 	postRegister as postRegisterController,
+	postResetPassword as postResetPasswordController,
 	putMe as putMeController,
 	putMeImage as putMeImageController,
 	putMeSocialMedia as putMeSocialMediaController,
@@ -30,6 +32,18 @@ defineRoutes(router, [
 		route: '/me',
 		roles: ['admin', 'user'],
 		controller: getMeController,
+	},
+	{
+		method: 'post',
+		route: '/reset-password',
+		// validator: postRegisterValidator,
+		controller: postResetPasswordController,
+	},
+	{
+		method: 'post',
+		route: '/change-password',
+		// validator: postRegisterValidator,
+		controller: postChangePasswordController,
 	},
 	{
 		method: 'put',
