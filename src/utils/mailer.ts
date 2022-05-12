@@ -1,6 +1,9 @@
 import nodeMailjet from 'node-mailjet';
 
-const mailjet = nodeMailjet.connect(process.env.MJ_APIKEY_PUBLIC ?? '76d1a9db60540f182664182760377c5b', process.env.MJ_APIKEY_PRIVATE ?? '2d6d793a30bb9d9f5409c24ba50eee36');
+const mailjet = nodeMailjet.connect(
+	process.env.MJ_APIKEY_PUBLIC ?? '76d1a9db60540f182664182760377c5b',
+	process.env.MJ_APIKEY_PRIVATE ?? '2d6d793a30bb9d9f5409c24ba50eee36'
+);
 const From = {
 	Email: 'NoReply@qfalumnirenuionevent.com',
 	Name: 'Digital Business Card',
@@ -40,7 +43,7 @@ export const sendEmailAccountCreated = async ({ email, name }: { email: string; 
 	}
 };
 
-export const sendEmailResetPassword = async ({ email }: { email: string }) => {
+export const sendEmailResetPassword = async ({ email, id }: { email: string; id: string }) => {
 	try {
 		const { body: result } = await mailjet.post('send', { version: 'v3.1' }).request({
 			Messages: [
@@ -56,9 +59,7 @@ export const sendEmailResetPassword = async ({ email }: { email: string }) => {
 					<h1>PASSWORD RESET</h1>
 					</br>
 					<p>You have requested to reset your password. 
-                    Your one-time passcode is <OTP>. 
-                    Please use this passcode to complete your 
-                    password reset.</p>
+                   	Click <a href="https://qfalumnireunionevent.com/reset-password/${id}">here</a> to resset password</p>
 					</br>
                     <p>The code will expire in 15 minutes.</p>
                     </br>

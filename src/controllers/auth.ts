@@ -129,8 +129,8 @@ export const postRegister: RequestHandler = async (req, res, next) => {
 export const postResetPassword: RequestHandler = async (req, res, next) => {
 	try {
 		const { email } = req.body;
-
-		sendEmailResetPassword(email);
+		const user = await User.findOne({ email });
+		sendEmailResetPassword({ email, id: user?._id ?? '' });
 
 		res.json({
 			message: 'Check your email',
