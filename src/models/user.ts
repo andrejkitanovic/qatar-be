@@ -49,7 +49,9 @@ const userSchema: Schema = new Schema({
 	links: [
 		{
 			display: Boolean,
-			type: String,
+			type: {
+				type: String,
+			},
 			value: String,
 		},
 	],

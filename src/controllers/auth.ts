@@ -2,6 +2,7 @@ import { RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
 
 import User from 'models/user';
+// import { sendEmailAccountCreated } from '../utils/mailer';
 
 export const getMe: RequestHandler = async (req, res, next) => {
 	try {
@@ -91,7 +92,8 @@ export const postRegister: RequestHandler = async (req, res, next) => {
 			role,
 			name,
 		});
-
+		// sendEmailAccountCreated(email);
+		
 		res.json({
 			message: 'Successfully registered',
 		});
