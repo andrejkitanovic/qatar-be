@@ -45,14 +45,19 @@ export const putMeSocialMedia: RequestHandler = async (req, res, next) => {
 			throw new Error();
 		}
 
-		let links: any[] = [];
-		if (user?.links) {
-			links = [...user.links];
+		let userLinks: any[] = user?.links || [];
+		// let links: any[] = [];
+
+		if (!userLinks.length) {
+			userLinks = [newLink];
+		} else {
+			userLinks = userLinks.filter((single) => single.type !== newLink.type);
+			userLinks = [...userLinks, newLink];
 		}
-		links = [...links, newLink];
+		console.log(userLinks)
 
 		await User.findByIdAndUpdate(id, {
-			links,
+			links: userLinks,
 		});
 
 		res.json({
