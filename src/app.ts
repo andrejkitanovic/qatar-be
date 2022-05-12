@@ -3,6 +3,7 @@ moduleAlias.addAliases({
 	helpers: __dirname + '/helpers',
 	routes: __dirname + '/routes',
 	models: __dirname + '/models',
+	utils: __dirname + '/utils',
 	controllers: __dirname + '/controllers',
 	middlewares: __dirname + '/middlewares',
 	validators: __dirname + '/validators',

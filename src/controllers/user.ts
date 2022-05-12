@@ -86,11 +86,10 @@ export const getSingleUser: RequestHandler = async (req, res, next) => {
 		if (user && req.auth?.id && user._id === req.auth.id) {
 			currentUser = true;
 		}
+
 		res.json({
-			data: {
-				...user,
-				currentUser,
-			},
+			currentUser,
+			data: user,
 		});
 	} catch (err) {
 		next(err);

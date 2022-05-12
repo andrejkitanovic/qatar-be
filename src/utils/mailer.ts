@@ -1,6 +1,6 @@
 import nodeMailjet from 'node-mailjet';
 
-const mailjet = nodeMailjet.connect(process.env.MJ_APIKEY_PUBLIC ?? '', process.env.MJ_APIKEY_PRIVATE ?? '');
+const mailjet = nodeMailjet.connect(process.env.MJ_APIKEY_PUBLIC ?? '76d1a9db60540f182664182760377c5b', process.env.MJ_APIKEY_PRIVATE ?? '2d6d793a30bb9d9f5409c24ba50eee36');
 const From = {
 	Email: 'NoReply@qfalumnirenuionevent.com',
 	Name: 'Digital Business Card',

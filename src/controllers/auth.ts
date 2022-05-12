@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import jwt from 'jsonwebtoken';
 
 import User from 'models/user';
-// import { sendEmailAccountCreated } from '../utils/mailer';
+import { sendEmailAccountCreated, sendEmailResetPassword, sendEmailPasswordChanged } from 'utils/mailer';
 
 export const getMe: RequestHandler = async (req, res, next) => {
 	try {
@@ -92,10 +92,41 @@ export const postRegister: RequestHandler = async (req, res, next) => {
 			role,
 			name,
 		});
-		// sendEmailAccountCreated(email);
-		
+		sendEmailAccountCreated({ email: email ?? '', name: name ?? '' });
+
 		res.json({
 			message: 'Successfully registered',
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+export const postResetPassword: RequestHandler = async (req, res, next) => {
+	try {
+		const { email } = req.body;
+
+		sendEmailResetPassword(email);
+
+		res.json({
+			message: 'Check your email',
+		});
+	} catch (err) {
+		next(err);
+	}
+};
+
+export const postChangePassword: RequestHandler = async (req, res, next) => {
+	try {
+		const { id, password } = req.body;
+		const user = await User.findById(id);
+		await User.findByIdAndUpdate(id, {
+			password: password,
+		});
+		sendEmailPasswordChanged({ email: user?.email || '' });
+
+		res.json({
+			message: 'Password successfully changed',
 		});
 	} catch (err) {
 		next(err);
