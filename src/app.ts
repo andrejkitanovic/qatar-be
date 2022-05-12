@@ -1,4 +1,13 @@
-import 'module-alias/register';
+import moduleAlias from 'module-alias'
+moduleAlias.addAliases({
+	helpers: __dirname + '/helpers',
+	routes: __dirname + '/routes',
+	models: __dirname + '/models',
+	controllers: __dirname + '/controllers',
+	middlewares: __dirname + '/middlewares',
+	validators: __dirname + '/validators',
+});
+
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
